@@ -441,7 +441,7 @@ pichia.reaction(5).id="rZ5"
 pichia.reaction(5).rate="r5"
 pichia.reaction(5).Y=["KXZ5", "KscFvZ5","KCaZ5","KKZ5", "KMgZ5", "KPZ5","KSZ5", "KNH3Z5", "KMetZ5","0"]
 pichia.reaction(6).id="rMem"
-pichia.reaction(6).rate="kMem"
+pichia.reaction(6).rate="-kMem*Mem"
 pichia.reaction(6).Y=["0", "0","0","0", "0", "0","0", "0", "0","Mem"]
 pichia.reaction(7).id="rFeed"
 pichia.reaction(7).rate="D"
@@ -556,7 +556,7 @@ pichia.mlm.y(6).val= 'rann6';
 pichia.mlm.y(6).min= 0; 
 pichia.mlm.y(6).max= 4;
 pichia.mlm.options={'hidden nodes', [9 9]};
-pichia.mlm.layer=1 %1-tanh 2-ReLu
+pichia.mlm.layer=2 %1-tanh 2-ReLu
 pichia.mlm.xfun=str2func('autoA_hybmod_anninp'); %generated automatically
 pichia.mlm.yfun=str2func('autoA_hybmod_rann'); %only used if 'user-defined'
 pichia.symbolic='full-symbolic';
@@ -576,14 +576,14 @@ pichia.datasource=3; %1 - text file; 2- excel file; 3-userdefined function
 pichia.datafun=@pichiadata_PC_vf;
 
 %training configuration
-pichia.mode=1;%;    %1-indirect, 2-direct, 3-semidirect
-pichia.method=1;    %1-lev-marquardt, 2-quasi-Newton   3- Simulated Annealing   4- ADAM
+pichia.mode=3;%;    %1-indirect, 2-direct, 3-semidirect
+pichia.method=4;    %1-lev-marquardt, 2-quasi-Newton   3- Simulated Annealing   4- ADAM
 pichia.jacobian=1;  %1-ON, 0- OFF   [ONLY FOR LEVENBERG-MARQUARDT]
 pichia.hessian=0;   %1-ON  0- OFF   [only for quasi-Newton]
 pichia.derivativecheck='off'; %'on' or 'off' [ONLY FOR LEVENBERG-MARQUARDT]
-pichia.niter=1000;
+pichia.niter=50000;
 pichia.niteroptim=1;
-pichia.nstep=10;
+pichia.nstep=1;
 pichia.display='off';   %'off','Iter'
 pichia.bootstrap=0; %1-do bootstrap; 0-no boostrapp
 pichia.nensemble=1; %number of models to aggregate >=1; if >1 confidence intervals are computed
